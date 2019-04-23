@@ -44,6 +44,12 @@ make planck/rev6:myKeymap
 
 ### Docker
 
+#### Enable BuildKit
+
+```shell
+export DOCKER_BUILDKIT=1
+```
+
 #### Build Base Image
 
 ```shell
