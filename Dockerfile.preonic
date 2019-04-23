@@ -1,0 +1,39 @@
+# syntax=docker/dockerfile:1.0-experimental
+
+FROM debian:latest as builder
+LABEL maintainer="gooodmorningopenstack"
+LABEL version="0.1"
+
+ENV DEBIAN_FRONTEND="noninteractive"
+ENV KEYBOARD=preonic/rev3
+ENV KEYMAP=default
+
+RUN apt update -qq && \
+  apt upgrade -qqy && \
+  apt install -qqy --no-install-recommends \
+    avr-libc \
+    avrdude \
+    binutils-arm-none-eabi \
+    binutils-avr \
+    build-essential \
+    dfu-programmer \
+    dfu-util \
+    gcc \
+    gcc-arm-none-eabi \
+    gcc-avr \
+    git \
+    libnewlib-arm-none-eabi \
+    software-properties-common \
+    unzip \
+    wget \
+    zip && \
+    apt clean
+
+COPY qmk_firmware /build/qmk/
+WORKDIR /build/qmk
+VOLUME ["/build/qmk"]
+
+CMD ["sh", "-c", "make ${KEYBOARD}:${KEYMAP}"]
+ENTRYPOINT []
+
+HEALTHCHECK NONE
