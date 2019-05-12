@@ -36,16 +36,21 @@ The source of the `hid_bootloader_cli` can be found in the [LUFA repository](htt
 ## Layout
 
 > Layer 0: classic alpha
+
 ![layer0](./daisy-layer0.png)
 
 > Layer 1: numbers and punctuation
+
 ![layer1](./daisy-layer1.png)
 
 > Layer 2: functions and movements
+
 ![layer2](./daisy-layer2.png)
 
 > Layer 3: RGB
+
 ![layer3](./daisy-layer3.png)
 
 > Layer 4: gaming :)
+
 ![layer4](./daisy-layer4.png)
