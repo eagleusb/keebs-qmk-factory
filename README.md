@@ -7,7 +7,7 @@ My keyboards and thus those targeted :
 -  Massdrop ALT
 -  UT47.2
 -  Miuni32
--  Daisy (MCU: atmega32u4)
+-  Daisy (MCU: atmega32u4) [>> see documentation](./doc/daisy/)
 
 ## Requirements
 
