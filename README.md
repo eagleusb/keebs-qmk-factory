@@ -7,7 +7,7 @@ My keyboards and thus those targeted :
 -  Massdrop ALT
 -  UT47.2
 -  Miuni32
--  Daisy
+-  Daisy (MCU: atmega32u4)
 
 ## Requirements
 
@@ -72,7 +72,16 @@ The firware files are always named like `<keyboard_name>_<keymap_name>.{bin,hex}
 
 ### Requirements
 
-Setup udev to access DFU without root privileges:
+Setup udev to access bootloaders (DFU, HID...) without root privileges:
+
+> /etc/udev/rules.d/49-teensy.rules
+
+```
+ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
+ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+```
 
 > /etc/udev/rules.d/50-atmel-dfu.rules:
 
