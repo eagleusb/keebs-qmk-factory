@@ -6,7 +6,7 @@ My keyboards and thus those targeted :
 -  OLKB Planck
 -  Massdrop ALT
 -  UT47.2
--  Miuni32
+-  Miuni32 (MCU: atmega32u4)
 -  Daisy (MCU: atmega32u4) [>> see documentation](./doc/daisy/)
 
 ## Requirements
@@ -108,13 +108,53 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="feed", MODE:="0666"
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1c11", MODE:="0666"
 ```
 
+### Atmega32u4 MCU
+
+```shell
+$ dfu-tool list
+Found 03eb:2ff4 [v0.0]:
+ Protocol:      AtmelAVR
+ Name:          ATm32U4DFU
+ Serial:        1.0.0
+ Mode:          DFU
+ Status:        OK
+ State:         dfuIDLE
+ Transfer Size: 64 bytes
+ Attributes:    can-download|can-upload
+ Quirks:        force-dfu-mode|use-any-interface|legacy-protocol
+ Chip ID:       0x581e9587
+ ID:            0
+  Name:         Flash
+  Region 0x00:  Zone:0, Sec#:0, Addr:0x00000000, Size:0x7000, Caps:0x7 [REW]
+```
+
+#### Manually
+
+```shell
+$ dfu-programmer atmega32u4 erase
+$ dfu-programmer atmega32u4 flash miuni32_default.hex
+$ dfu-programmer atmega32u4 start
+```
+
 ### STM32 MCU
 
 Check that keyboard is in DFU mode, compile and flash the firmware:
-
 ```shell
-dfu-tool list
-TIME_DELAY=20 make preonic/rev3:default:dfu-util-wait
+$ dfu-tool list
+```
+
+#### Manually
+
+Burn manually the firmware to MCU:
+```shell
+$ dfu-util -v -d 0483:df11 -a 0 -s 0x08000000:leave -D preonic_rev3_grumpycat.bin
+```
+
+#### With Make
+
+Burn firmware automatically, with make:
+```shell
+$ TIME_DELAY=20 make preonic/rev3:default:dfu-util-wait
 ```
 
 Output:
