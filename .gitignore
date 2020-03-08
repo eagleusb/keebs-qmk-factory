@@ -1,3 +1,5 @@
 build/*
-!build/*daisy*.hex
+!build/SHA256SUMS
+!build/daisy*.hex
+!build/preonic_rev3*.hex
 .vscode
