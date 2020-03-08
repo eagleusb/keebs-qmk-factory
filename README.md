@@ -141,7 +141,9 @@ $ dfu-programmer atmega32u4 start
 
 Check that keyboard is in DFU mode, compile and flash the firmware:
 ```shell
-$ dfu-tool list
+$ dfu-tool --list
+Found DFU: [0483:df11] ver=2200, devnum=8, cfg=1, intf=0, path="1-6", alt=1, name="@Option Bytes  /0x1FFFF800/01*016 e", serial="206B30532035"
+Found DFU: [0483:df11] ver=2200, devnum=8, cfg=1, intf=0, path="1-6", alt=0, name="@Internal Flash  /0x08000000/128*0002Kg", serial="206B30532035"
 ```
 
 #### Manually
