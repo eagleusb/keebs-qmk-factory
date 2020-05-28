@@ -9,6 +9,9 @@ My keyboards and thus those targeted :
 -  Miuni32 (MCU: atmega32u4) [>> see documentation](./doc/miuni32/)
 -  Daisy (MCU: atmega32u4) [>> see documentation](./doc/daisy/)
 -  Lubrigante Wonderland (MCU: TBD)
+-  RoMac (MCU: TBD)
+-  Liminal (MCU: TBD)
+-  Tokyo60 (MCU: TBD)
 
 ## Requirements
 
