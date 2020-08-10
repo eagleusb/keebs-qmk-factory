@@ -2,22 +2,22 @@
 
 My keyboards and thus those targeted :
 
--  OLKB Preonic (MCU: ARM STM32F303) [>> see documentation](./doc/preonic/)
--  OLKB Planck (MCU: TBD) [>> see documentation](./doc/planck/)
--  Massdrop ALT (MCU: TBD) [>> see documentation](./doc/alt/)
--  UT47.2 (MCU: TBD) [>> see documentation](./doc/ut472/)
--  Miuni32 (MCU: atmega32u4) [>> see documentation](./doc/miuni32/)
--  Daisy (MCU: atmega32u4) [>> see documentation](./doc/daisy/)
--  Lubrigante Wonderland (MCU: TBD)
--  RoMac (MCU: TBD)
--  Liminal (MCU: TBD)
--  Tokyo60 (MCU: TBD)
+- OLKB Preonic (MCU: ARM STM32F303) [>> see documentation](./doc/preonic/)
+- OLKB Planck (MCU: TBD) [>> see documentation](./doc/planck/)
+- Massdrop ALT (MCU: TBD) [>> see documentation](./doc/alt/)
+- UT47.2 (MCU: TBD) [>> see documentation](./doc/ut472/)
+- Miuni32 (MCU: atmega32u4) [>> see documentation](./doc/miuni32/)
+- Daisy (MCU: atmega32u4) [>> see documentation](./doc/daisy/)
+- Lubrigante Wonderland (MCU: TBD)
+- RoMac (MCU: TBD)
+- Liminal (MCU: TBD)
+- Tokyo60 v3 (MCU: TBD)
 
 ## Requirements
 
 Many OS'es are supported, here we assume that Debian systems are used.
 
-```
+```text
 build-essential
 avr-libc
 binutils-arm-none-eabi
@@ -80,7 +80,7 @@ Setup udev to access bootloaders (DFU, HID...) without root privileges:
 
 > /etc/udev/rules.d/49-teensy.rules
 
-```
+```text
 ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
 ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
@@ -89,7 +89,7 @@ KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:
 
 > /etc/udev/rules.d/50-atmel-dfu.rules:
 
-```
+```text
 # Atmel ATMega32U4
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2ff4", MODE:="0666"
 # Atmel USBKEY AT90USB1287
@@ -100,14 +100,14 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2ff0", MODE:="066
 
 > /etc/udev/rules.d/52-tmk-keyboard.rules:
 
-```
+```text
 # tmk keyboard products     https://github.com/tmk/tmk_keyboard
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="feed", MODE:="0666"
 ```
 
 > /etc/udev/rules.d/54-input-club-keyboard.rules:
 
-```
+```text
 # Input Club keyboard bootloader
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1c11", MODE:="0666"
 ```
@@ -143,6 +143,7 @@ $ dfu-programmer atmega32u4 start
 ### STM32 MCU
 
 Check that keyboard is in DFU mode, compile and flash the firmware:
+
 ```shell
 $ dfu-tool --list
 Found DFU: [0483:df11] ver=2200, devnum=8, cfg=1, intf=0, path="1-6", alt=1, name="@Option Bytes  /0x1FFFF800/01*016 e", serial="206B30532035"
@@ -152,6 +153,7 @@ Found DFU: [0483:df11] ver=2200, devnum=8, cfg=1, intf=0, path="1-6", alt=0, nam
 #### Manually
 
 Burn manually the firmware to MCU:
+
 ```shell
 $ dfu-util -v -d 0483:df11 -a 0 -s 0x08000000:leave -D preonic_rev3_grumpycat.bin
 ```
@@ -159,6 +161,7 @@ $ dfu-util -v -d 0483:df11 -a 0 -s 0x08000000:leave -D preonic_rev3_grumpycat.bi
 #### With Make
 
 Burn firmware automatically, with make:
+
 ```shell
 $ TIME_DELAY=20 make preonic/rev3:default:dfu-util-wait
 ```
