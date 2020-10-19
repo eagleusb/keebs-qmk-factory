@@ -4,8 +4,8 @@ My keyboards and thus those targeted :
 
 - OLKB Preonic (MCU: ARM STM32F303) [>> see documentation](./doc/preonic/)
 - OLKB Planck (MCU: TBD) [>> see documentation](./doc/planck/)
-- Massdrop ALT (MCU: TBD) [>> see documentation](./doc/alt/)
-- UT47.2 (MCU: TBD) [>> see documentation](./doc/ut472/)
+- Massdrop ALT (MCU: ATSAMD51J18A) [>> see documentation](./doc/alt/)
+- UT47.2 (MCU: atmega32u2) [>> see documentation](./doc/ut472/)
 - Miuni32 (MCU: atmega32u4) [>> see documentation](./doc/miuni32/)
 - Daisy (MCU: atmega32u4) [>> see documentation](./doc/daisy/)
 - Lubrigante Wonderland (MCU: TBD)
