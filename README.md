@@ -11,7 +11,7 @@ My keyboards and thus those targeted :
 - Lubrigante Wonderland (MCU: TBD)
 - RoMac (MCU: TBD)
 - Liminal (MCU: TBD)
-- Tokyo60 v3 (MCU: TBD)
+- Tokyo60 v3 (MCU: atmega32u4) [>> see documentation](./doc/tokyo60/)
 
 ## Requirements
 
