@@ -34,7 +34,7 @@ atmel.c:784: Flash region from 0x0 to 0x6FFF is blank.
 atmel.c:861: Flash blank from 0x0 to 0x6FFF.
 Empty.
 
-sudo dfu-programmer atmega32u4 flash --force --debug=999 tokyokeyboard_tokyo60_grumpycat.hex
+sudo dfu-programmer atmega32u4 flash --debug=999 tokyokeyboard_tokyo60_grumpycat.hex
 dfu.c:144: dfu_download( 0x7ffc2cda6c00, 6, 0x7ffc2cda69f2 )
 dfu.c:165: Message: m[0] = 0x03
 dfu.c:165: Message: m[1] = 0x00
