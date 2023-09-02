@@ -2,16 +2,19 @@
 
 My keyboards and thus those targeted :
 
-- OLKB Preonic (MCU: ARM STM32F303) [>> see documentation](./doc/preonic/)
-- OLKB Planck (MCU: TBD) [>> see documentation](./doc/planck/)
-- Massdrop ALT (MCU: ATSAMD51J18A) [>> see documentation](./doc/alt/)
-- UT47.2 (MCU: atmega32u2) [>> see documentation](./doc/ut472/)
-- Miuni32 (MCU: atmega32u4) [>> see documentation](./doc/miuni32/)
 - Daisy (MCU: atmega32u4) [>> see documentation](./doc/daisy/)
-- Lubrigante Wonderland (MCU: TBD)
-- RoMac (MCU: TBD)
 - Liminal (MCU: TBD)
+- Lubrigante Wonderland (MCU: TBD)
+- Massdrop ALT (MCU: ATSAMD51J18A) [>> see documentation](./doc/alt/)
+- Miuni32 (MCU: atmega32u4) [>> see documentation](./doc/miuni32/)
+- OLKB Planck (MCU: TBD) [>> see documentation](./doc/planck/)
+- OLKB Preonic (MCU: ARM STM32F303) [>> see documentation](./doc/preonic/)
+- RoMac (MCU: TBD)
+- Swiss Cheeseboard (MCU: TBD)
+- Thermal SEQ2 (MCU: TBD)
 - Tokyo60 v3 (MCU: atmega32u4) [>> see documentation](./doc/tokyo60/)
+- UT47.2 (MCU: atmega32u2) [>> see documentation](./doc/ut472/)
+- Vanguard65 (MCU: TBD)
 
 ## Requirements
 
@@ -135,9 +138,9 @@ Found 03eb:2ff4 [v0.0]:
 #### Manually
 
 ```shell
-$ dfu-programmer atmega32u4 erase
-$ dfu-programmer atmega32u4 flash miuni32_default.hex
-$ dfu-programmer atmega32u4 start
+dfu-programmer atmega32u4 erase
+dfu-programmer atmega32u4 flash miuni32_default.hex
+dfu-programmer atmega32u4 start
 ```
 
 ### STM32 MCU
@@ -155,7 +158,7 @@ Found DFU: [0483:df11] ver=2200, devnum=8, cfg=1, intf=0, path="1-6", alt=0, nam
 Burn manually the firmware to MCU:
 
 ```shell
-$ dfu-util -v -d 0483:df11 -a 0 -s 0x08000000:leave -D preonic_rev3_grumpycat.bin
+dfu-util -v -d 0483:df11 -a 0 -s 0x08000000:leave -D preonic_rev3_grumpycat.bin
 ```
 
 #### With Make
@@ -163,7 +166,7 @@ $ dfu-util -v -d 0483:df11 -a 0 -s 0x08000000:leave -D preonic_rev3_grumpycat.bi
 Burn firmware automatically, with make:
 
 ```shell
-$ TIME_DELAY=20 make preonic/rev3:default:dfu-util-wait
+TIME_DELAY=20 make preonic/rev3:default:dfu-util-wait
 ```
 
 Output:
@@ -174,8 +177,8 @@ Creating binary load file for flashing: .build/preonic_rev3_default.bin         
 Creating load file for flashing: .build/preonic_rev3_default.hex                                    [OK]
 
 Size after:
-   text	   data	    bss	    dec	    hex	filename
-      0	  49328	      0	  49328	   c0b0	.build/preonic_rev3_default.hex
+   text    data     bss     dec     hex filename
+      0   49328       0   49328    c0b0 .build/preonic_rev3_default.hex
 
 Copying preonic_rev3_default.bin to qmk_firmware folder                                             [OK]
 Preparing to flash firmware. Please enter bootloader now...
@@ -195,7 +198,7 @@ DFU mode device DFU version 011a
 Device returned transfer size 2048
 DfuSe interface name: "Internal Flash  "
 Downloading to address = 0x08000000, size = 49336
-Download	[=========================] 100%        49336 bytes
+Download [=========================] 100%        49336 bytes
 Download done.
 File downloaded successfully
 Transitioning to dfuMANIFEST state
